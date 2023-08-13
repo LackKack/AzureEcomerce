@@ -24,7 +24,7 @@ namespace Ecommerce.Api.Search.Services
                 {
                     var content = await response.Content.ReadAsStreamAsync();
                     var options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
-                    var result = JsonSerializer.DeserializeAsync<dynamic>(content, options);
+                    var result = await JsonSerializer.DeserializeAsync<dynamic>(content, options);
                     return (true, result, string.Empty);
                 }
                 return (false, null, response.ReasonPhrase);
